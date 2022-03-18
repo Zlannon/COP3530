@@ -1,7 +1,7 @@
 //imports
 #include <iostream>
 
-//main function
+//main functions
 int main() {
 	
 }
