@@ -1,0 +1,413 @@
+
+
+.container {
+  display: flex; 
+  height: 100vh; 
+}
+
+
+.naturalDisasters {
+  height: 20%;
+}
+
+.rightSide { 
+  width: 80%
+}
+.map {
+  height: 92.5%; /*92.5%*/
+  
+}
+/* the above hsould be 95% */ 
+.map-container { 
+  width: 100vh;
+  height: 100vh; 
+}
+/* nneed to change tsi */
+.controls { 
+  width: 20%; 
+  padding: 1rem; 
+  background: #20232a;
+  color: #fff;
+  margin: 8px; 
+  border-radius: 10px; 
+  border: 3px solid green;
+}
+
+.controlsDos {
+  width: 20%; 
+  padding: 1rem; 
+  background: white;
+  color: black;
+  margin: 8px; 
+  border-radius: 10px; 
+  border: 3px solid navy;
+}
+
+.heading {
+  height: 5%;
+  width: 100%;
+  background: #20232a; 
+  margin: 3px;
+  color: #fff;
+  border-radius: 10px; 
+  border: 3px solid green;
+}
+.headingDos {
+  height: 5%;
+  width: 100%;
+  background: white; 
+  margin: 3px;
+  color: black;
+  border-radius: 10px; 
+  border: 3px solid navy;
+}
+
+:root {
+  --text-color: #dadce1;
+  --nav-size: 50px;
+  --speed: 500ms; 
+}
+
+ul {
+  list-style: 'none';
+  padding: 0; 
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.icon-button {
+  --button-size: calc(var(--nav-size) * 0.5);
+  width: var(--button-size);
+  height: var(--button-size);
+  background-color: #484a4d; 
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms; 
+}
+
+.icon-button:hover {
+  filter: brightness(1.2);
+}
+
+.nav-item {
+  display: inline; /* probably need to change this */ 
+}
+.icon-button svg {
+  fill: var(--text-color);
+  width: 20px;
+  height: 20px; 
+}
+
+/* Dropdown Menu */
+
+.dropdown {
+  position: absolute;
+  top: 45px;
+  width: 300px;
+  background-color: var(--bg);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: height var(--speed) ease;
+}
+
+.menu {
+  width: 100%;
+}
+
+.menu-item {
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+}
+
+
+
+
+.menu-item .icon-button:hover {
+  filter: none;
+}
+
+.menu-item:hover {
+  background-color: #525357;
+}
+
+.icon-right {
+  margin-left: auto;
+}
+
+
+
+/* CSSTransition classes  */
+.menu-primary-enter {
+  position: absolute;
+  transform: translateX(-110%);
+}
+.menu-primary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+.menu-primary-exit {
+  position: absolute;
+}
+.menu-primary-exit-active {
+  transform: translateX(-110%);
+  transition: all var(--speed) ease;
+}
+
+
+.menu-secondary-enter {
+  transform: translateX(110%);
+}
+.menu-secondary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+.menu-secondary-exit {
+
+}
+.menu-secondary-exit-active {
+  transform: translateX(110%);
+  transition: all var(--speed) ease;
+}
+
+.theButton { 
+  border-radius: 10px; 
+  background-color: #20232a;
+  border-color: green;
+  font-size: 28px;
+  font-weight: bold;
+  color: chartreuse;
+  font-family: PT-serif; 
+}
+
+.buttonClicked { 
+  border-radius: 10px; 
+  background-color: #20232a;
+  border-color: rgb(30, 190, 142);
+  font-size: 28px;
+  font-weight: bold;
+  color: chartreuse;
+  font-family: PT-serif; 
+}
+
+.searchOuter {
+  
+  background-color: white;
+  padding-right: 100px; /* fine for the moment do math later */ 
+  border-radius: 5px;
+  
+
+}
+
+
+
+.searchInputs { 
+  display: flex; /* delete flex => error */
+}
+.search input { 
+  background-color: white;
+  border: 0; /* delete this and you CANNOT have the same line*/ 
+  border-radius: 2px;
+  font-size: 14px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  height: 30px;
+  width: 100px;
+}
+
+.filterWrap {
+  margin-top: 10px;
+  border-radius: 10px; 
+  background-color: #20232a;
+  height: 525px;
+  border: 3px solid green;
+}
+
+.algos {
+  margin-top: 10px;
+  border-radius: 10px; 
+  background-color: #20232a;
+  height: 200px;
+  border: 3px solid green;
+}
+
+.searchIcon {
+  height: 32px;
+  width: 50px;
+  background-color: white;
+  color: black;
+  display: grid;
+  place-items: center;
+  border-radius: 2px; 
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.searchIcon svg { 
+  font-size: 35px; 
+}
+
+.dataResult { 
+
+}
+
+.searchTexts {
+  margin-top: 2px; 
+  font-family: PT-serif;
+  text-align: center;
+  color: chartreuse;
+  font-weight: bold;
+}
+
+.searchButton {
+  border-radius: 10px; 
+  background-color: #20232a;
+  border-color: green;
+  font-size: 12px;
+  font-weight: bold;
+  color: chartreuse;
+  font-family: PT-serif; 
+}
+
+.searchClicked {
+  border-radius: 10px; 
+  background-color: #20232a;
+  border-color: rgb(30, 190, 142);
+  font-size: 12px;
+  font-weight: bold;
+  color: chartreuse;
+  font-family: PT-serif; 
+}
+
+.horizLine {
+  width: 80px;
+  border-top: 2px solid green;
+  margin-top: 15px;
+}
+
+.horizLine2 {
+  border-top: 2px solid navy;
+  margin-top: 15px;
+}
+
+.wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vh; 
+  justify-content: center;
+  align-items: center; 
+}
+
+.accordian {
+  width: 100%; 
+}
+
+.item {
+  background: #20232a;
+  margin-bottom: 5px; 
+  padding: 10px 20px; 
+  border: 3px solid green;
+  border-radius: 2px;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: bold;
+  color: chartreuse;
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;  
+  margin-bottom: 12px; 
+}
+
+.content {
+   color: white;
+   max-height: 0; 
+   overflow: hidden; 
+   transition: all 0.5s cubic-bezier(0,1,0,1);
+}
+
+.content.show { 
+  height: auto; 
+  max-height: 9999px; 
+  transition: all 0.5s cubic-bezier(1,0,1,0);
+}
+
+.head {
+  color: chartreuse;
+  font-size: 22;
+  font-family: PT-Serif;
+  font-weight: bold;
+  position: absolute;
+  top: 0; 
+}
+
+.head2 {
+  color: black;
+  font-size: 22;
+  font-family: PT-Serif;
+  font-weight: bold;
+  position: absolute;
+  top: 0; 
+}
+
+.filters {
+  color: chartreuse; 
+  font-size: 22px; 
+  font-weight: bold; 
+  margin-bottom: 2px;
+  margin-left: 10%; 
+}
+
+.filterTypes {
+  color: chartreuse; 
+  font-size: 14px;   
+  margin-bottom: 2px;
+  margin-left: 2%; 
+}
+
+.activateAlgo {
+   border-radius: 10px; 
+   text-align: center;
+   position: relative; 
+   left: 11%; 
+   margin-top: 30px; 
+   padding: 20px; 
+   padding-left: 40px; 
+   padding-right: 40px; 
+   font-size: 18px; 
+   border-color: green;
+   background-color: #20232a;
+   color: chartreuse;
+   font-family: PT-serif; 
+}
+
+.activateAlgo:hover { 
+  background-color: #282c35; /*#2c3037*/
+}
+
+.DBar {
+  position: relative;
+  top: 10%; 
+}
+
+.DBarExtended {
+    background-color: #20232a; 
+    padding-right: 240px; 
+    padding-bottom: 780px; /* not going to be mathematically correct - edit this later */
+    border: 3px solid green; 
+    border-radius: 10px; 
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-top: 0px solid green; 
+}
