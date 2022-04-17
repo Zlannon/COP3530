@@ -11,13 +11,26 @@ void disaster::Load(std::vector<disaster*>& Disasters, const std::string File, s
 			std::string state;
 			std::string month;
 			std::string Year;
-			std::string damage;
+			std::string Damage;
+			double temp;
+			int damage;
 			int year;
 			std::getline(stream, state, ',');
 			std::getline(stream, Year, ',');
 			std::getline(stream, month, ',');
 			std::getline(stream, type, ',');
-			std::getline(stream, damage);
+			std::getline(stream, Damage);
+			temp = std::stod(Damage);
+			damage = (int)temp;
+			if (Damage[Damage.length() - 1] == 'K') {
+				damage = (int)(temp * 1000);
+			}
+			if (Damage[Damage.length() - 1] == 'M') {
+				damage = (int)(temp * 1000000);
+			}
+			if (Damage[Damage.length() - 1] == 'B') {
+				damage = (int)(temp * 1000000000);
+			}
 			year = std::stoi(Year);
 			disaster* New = new disaster(type, state, month, year, damage);
 
