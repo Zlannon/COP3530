@@ -13,13 +13,13 @@ struct disaster {
 	std::string state;
 	std::string month;
 	int year;
-	std::string damage;
+	int damage;
 
 	disaster() {
 
 	}
 
-	disaster(std::string Type, std::string State, std::string Month, int Year, std::string Damage) {
+	disaster(std::string Type, std::string State, std::string Month, int Year, int Damage) {
 		type = Type;
 		state = State;
 		month = Month;
