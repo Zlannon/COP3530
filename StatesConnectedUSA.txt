@@ -8,7 +8,7 @@ Arizona Utah
 Arizona Nevada
 Arizona California
 Arkansas Mississippi
-Arkansas Lousiana
+Arkansas Louisiana
 Arkansas Missouri
 Arkansas Texas
 Arkansas Oklahoma
@@ -24,7 +24,7 @@ Colorado Nebraska
 Colorado Oklahoma
 Connecticut New_York
 Connecticut Massachusetts
-Connecticut Rhode Island
+Connecticut Rhode_Island
 Delaware New_Jersey
 Delaware Maryland
 Florida Georgia
@@ -52,7 +52,7 @@ Illinois Missouri
 Illinois Kentucky
 Iowa Illinois
 Iowa Minnesota
-Iowa Wisconson
+Iowa Wisconsin
 Iowa Nebraska
 Iowa South_Dakota
 Kansas Nebraska
@@ -70,19 +70,19 @@ Louisiana Mississippi
 Louisiana Arkansas
 Louisiana Texas
 Maine New_Hampshire
-Maryland Deleware
-Maryland Philidelphia
+Maryland Delaware
+Maryland Pennsylvania
 Maryland West_Virginia
 Maryland Virginia
 Massachusetts Connecticut
 Massachusetts New_Hampshire
 Massachusetts Vermont
-Massachusetts Rhode Island
+Massachusetts Rhode_Island
 Massachusetts New_York
 Michigan Indiana
 Michigan Wisconsin
 Michigan Ohio
-Minnesota Wisonsin
+Minnesota Wisconsin
 Minnesota Iowa
 Minnesota North_Dakota
 Minnesota South_Dakota
@@ -155,17 +155,17 @@ Pennsylvania Maryland
 Pennsylvania New_Jersey
 Pennsylvania Ohio
 Pennsylvania West_Virginia
-Rhode Island Massachusetts
-Rhode Island Connecticut
+Rhode_Island Massachusetts
+Rhode_Island Connecticut
 South_Carolina North_Carolina
 South_Carolina Georgia
-South_Carolina Tennessee 
+South_Carolina Tennessee
 South_Dakota North_Dakota
 South_Dakota Minnesota
 South_Dakota Iowa
 South_Dakota Nebraska
 South_Dakota Wyoming
-South_Dakota Montana 
+South_Dakota Montana
 Tennessee Georgia
 Tennessee Alabama
 Tennessee Mississippi
@@ -176,7 +176,7 @@ Tennessee North_Carolina
 Tennessee South_Carolina
 Tennessee Virginia
 Texas Oklahoma
-Texas Lousiana
+Texas Louisiana
 Texas Arkansas
 Texas New_Mexico
 Utah Colorado
@@ -185,13 +185,13 @@ Utah Arizona
 Utah Nevada
 Utah Idaho
 Vermont New_York
-Vermont New_Hampshier
+Vermont New_Hampshire
 Vermont Massachusetts
 Virginia West_Virginia
 Virginia Maryland
 Virginia North_Carolina
 Virginia Kentucky
-Virginia Tennessee 
+Virginia Tennessee
 Washington Idaho
 Washington Oregon
 West_Virginia Virginia

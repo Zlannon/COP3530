@@ -22,8 +22,8 @@ int main() {
 			runner.insert(inCountry, outCountry);
 	}
 
-	runner.depthFirst("florida");
-
+	//runner.display("florida");
+	runner.breadthFirstCountries("florida");
 	system("pause");
 	return 0;
 }

@@ -22,12 +22,14 @@ class graph {
 
 public:
 
-	graph() {
-
-	}
-
+	graph();
 	void insert(std::string inCountry, std::string outCountry);
 	void insert(std::string inCountry);
-	void breadthFirst(std::string src);
-	void depthFirst(std::string src);
+	void breadthFirstCountries(std::string src);
+	void depthFirstCountries(std::string src);
+	void breadthFirstDisasters(std::string src);
+	void depthFirstDisasters(std::string src);
+	void displayXhighest(int amount);
+	void displayXtypes(int amount, std::string type);
+	void display(std::string s);
 };

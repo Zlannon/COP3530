@@ -44,4 +44,21 @@
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Switch.css">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Switch.js">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="data1.0.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="App.js">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="App.css">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
