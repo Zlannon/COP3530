@@ -17,6 +17,7 @@ void graph::insert(std::string inCountry, std::string outCountry) {
     }
 }
 
+
 void graph::insert(std::string inCountry) {
     for (int i = 0; i < inCountry.length(); i++)
         inCountry[i] = std::tolower(inCountry[i]);
@@ -73,6 +74,7 @@ void graph::depthFirstCountries(std::string src) {
     }
 }
 
+
 void graph::breadthFirstDisasters(std::string src) {
 
     for (int i = 0; i < src.length(); i++)
@@ -119,6 +121,7 @@ void graph::depthFirstDisasters(std::string src) {
     }
 }
 
+
 void graph::displayXhighest(const int amount) {
     
     std::vector<disaster*> Xtypes(amount, new disaster());
@@ -147,6 +150,7 @@ void graph::displayXhighest(const int amount) {
     }
 }
 
+
 void graph::displayXtypes(const int amount, std::string type) {
 
     std::vector<disaster*> Xtypes(amount, new disaster());
@@ -173,8 +177,78 @@ void graph::displayXtypes(const int amount, std::string type) {
         std::cout << "Time: " << Xtypes[i]->month << ", " << Xtypes[i]->year << std::endl;
         std::cout << "Damage: " << Xtypes[i]->damage << std::endl;
     }
-
 }
+
+void graph::displayLocation(int year, std::string type, std::string state) {
+
+    std::vector<disaster*> Xtypes;
+
+    if (state != "") {
+        if (type != "" && year != 0) {
+            for (int i = 0; i < countries[state].disasters.size(); i++) {
+                if (countries[state].disasters[i]->type == type && countries[state].disasters[i]->year == year) {
+                    Xtypes.push_back(countries[state].disasters[i]);
+                }
+            }
+        }
+        else if (type != "") {
+            for (int i = 0; i < countries[state].disasters.size(); i++) {
+                if (countries[state].disasters[i]->type == type) {
+                    Xtypes.push_back(countries[state].disasters[i]);
+                }
+            }
+        }
+        else if (year != 0) {
+            for (int i = 0; i < countries[state].disasters.size(); i++) {
+                if (countries[state].disasters[i]->year == year) {
+                    Xtypes.push_back(countries[state].disasters[i]);
+                }
+            }
+        }
+    }
+    else if (type != "") {
+        if (year != 0) {
+            std::map<std::string, country>::iterator it;
+            for (it = countries.begin(); it != countries.end(); it++) {
+                for (int i = 0; i < it->second.disasters.size(); i++) {
+                    if (it->second.disasters[i]->type == type && it->second.disasters[i]->year == year) {
+                        Xtypes.push_back(it->second.disasters[i]);
+                    }
+                }
+            }
+        }
+        else {
+            std::map<std::string, country>::iterator it;
+            for (it = countries.begin(); it != countries.end(); it++) {
+                for (int i = 0; i < it->second.disasters.size(); i++) {
+                    if (it->second.disasters[i]->type == type) {
+                        Xtypes.push_back(it->second.disasters[i]);
+                    }
+                }
+            }
+        }
+    }
+    else if (year != 0) {
+        std::map<std::string, country>::iterator it;
+        for (it = countries.begin(); it != countries.end(); it++) {
+            for (int i = 0; i < it->second.disasters.size(); i++) {
+                if (it->second.disasters[i]->year == year) {
+                    Xtypes.push_back(it->second.disasters[i]);
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < Xtypes.size(); i++) {
+        std::cout << "--------------------" << std::endl;
+        std::cout << "State: " << Xtypes[i]->state << std::endl;
+        std::cout << "Type: " << Xtypes[i]->type << std::endl;
+        std::cout << "Time: " << Xtypes[i]->month << ", " << Xtypes[i]->year << std::endl;
+        std::cout << "Damage: " << Xtypes[i]->damage << std::endl;
+    }
+}
+
+
 
 void graph::display(std::string state) {
     countries[state].displayStats();

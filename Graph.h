@@ -31,5 +31,6 @@ public:
 	void depthFirstDisasters(std::string src);
 	void displayXhighest(int amount);
 	void displayXtypes(int amount, std::string type);
+	void displayLocation(int Year, std::string type, std::string state);
 	void display(std::string s);
 };
