@@ -12,6 +12,7 @@ void disaster::Load(std::vector<disaster*>& Disasters, const std::string File, s
 			std::string month;
 			std::string Year;
 			std::string Damage;
+			std::string county;
 			double temp;
 			int damage;
 			int year;
@@ -19,7 +20,8 @@ void disaster::Load(std::vector<disaster*>& Disasters, const std::string File, s
 			std::getline(stream, Year, ',');
 			std::getline(stream, month, ',');
 			std::getline(stream, type, ',');
-			std::getline(stream, Damage);
+			std::getline(stream, Damage, ',');
+			std::getline(stream, county);
 			temp = std::stod(Damage);
 			damage = (int)temp;
 			if (Damage[Damage.length() - 1] == 'K') {
@@ -32,7 +34,7 @@ void disaster::Load(std::vector<disaster*>& Disasters, const std::string File, s
 				damage = (int)(temp * 1000000000);
 			}
 			year = std::stoi(Year);
-			disaster* New = new disaster(type, state, month, year, damage);
+			disaster* New = new disaster(type, state, month, year, damage, county);
 
 			for (int i = 0; i < state.length(); i++)
 				state[i] = std::tolower(state[i]);
