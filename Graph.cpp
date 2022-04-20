@@ -205,6 +205,11 @@ void graph::displayLocation(int year, std::string type, std::string state) {
                 }
             }
         }
+        else {
+            for (int i = 0; i < countries[state].disasters.size(); i++) {
+                Xtypes.push_back(countries[state].disasters[i]);
+            }
+        }
     }
     else if (type != "") {
         if (year != 0) {
@@ -235,6 +240,14 @@ void graph::displayLocation(int year, std::string type, std::string state) {
                 if (it->second.disasters[i]->year == year) {
                     Xtypes.push_back(it->second.disasters[i]);
                 }
+            }
+        }
+    }
+    else {
+        std::map<std::string, country>::iterator it;
+        for (it = countries.begin(); it != countries.end(); it++) {
+            for (int i = 0; i < it->second.disasters.size(); i++) {
+                Xtypes.push_back(it->second.disasters[i]);
             }
         }
     }

@@ -19,7 +19,6 @@ class graph {
 	country runner;
 	std::map<std::string, std::vector<country>> adjList;
 	std::map<std::string, country> countries;
-
 public:
 
 	graph();
