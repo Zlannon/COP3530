@@ -1,6 +1,19 @@
 #include "disaster.h"
 
-void disaster::Load(std::vector<disaster*>& Disasters, const std::string File, std::string country) {
+disaster::disaster() {
+
+}
+
+disaster::disaster(std::string Type, std::string State, std::string Month, int Year, int Damage, std::string County) {
+	type = Type;
+	state = State;
+	month = Month;
+	year = Year;
+	damage = Damage;
+	county = County;
+}
+
+void disaster::Load(std::vector<disaster*>& Disasters, const std::string File, std::string State) {
 	std::ifstream file(File);
 	if (file.is_open()) {
 		std::string line;
@@ -20,8 +33,8 @@ void disaster::Load(std::vector<disaster*>& Disasters, const std::string File, s
 			std::getline(stream, Year, ',');
 			std::getline(stream, month, ',');
 			std::getline(stream, type, ',');
+			std::getline(stream, county, ',');
 			std::getline(stream, Damage, ',');
-			std::getline(stream, county);
 			temp = std::stod(Damage);
 			damage = (int)temp;
 			if (Damage[Damage.length() - 1] == 'K') {
@@ -34,14 +47,16 @@ void disaster::Load(std::vector<disaster*>& Disasters, const std::string File, s
 				damage = (int)(temp * 1000000000);
 			}
 			year = std::stoi(Year);
-			disaster* New = new disaster(type, state, month, year, damage, county);
+
 
 			for (int i = 0; i < state.length(); i++)
 				state[i] = std::tolower(state[i]);
-			for (int i = 0; i < country.length(); i++)
-				country[i] = std::tolower(country[i]);
+			for (int i = 0; i < State.length(); i++)
+				State[i] = std::tolower(State[i]);
 
-			if(state == country)
+			disaster* New = new disaster(type, state, month, year, damage, county);
+
+			if(state == State)
 				Disasters.push_back(New);
 		}
 	}

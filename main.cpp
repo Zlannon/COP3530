@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 #include "Graph.h"
-#include "Country.h"
+#include "State.h"
 #include "disaster.h"
 
 int main() {
@@ -14,12 +14,12 @@ int main() {
 	file.open("StatesConnectedUSA.txt");
 	std::string input = "";
 	while (std::getline(file, input)) {
-		std::string inCountry = input.substr(0, input.find(" "));
-		std::string outCountry = input.substr(input.find(" ") + 1, input.length() - input.find(" "));
-		if(outCountry == "")
-			runner.insert(inCountry);
+		std::string inState = input.substr(0, input.find(" "));
+		std::string outState = input.substr(input.find(" ") + 1, input.length() - input.find(" "));
+		if(outState == "")
+			runner.insert(inState);
 		else
-			runner.insert(inCountry, outCountry);
+			runner.insert(inState, outState);
 	}
 
 	int option = 0;
@@ -142,7 +142,7 @@ int main() {
 					type = "Heavy Rain";
 					break;
 				case 14:
-					type = "Tsunami";
+					type = "Tsunami/Wave";
 					break;
 				case 15:
 					type = "High Wind";
@@ -168,7 +168,7 @@ int main() {
 				break;
 			case 5:
 
-				std::cout << "Type year of disaster ('0' for all) or '-1' to return to main menu: ";
+				std::cout << "Type year of disaster [2006-2011] ('0' for all) or '-1' to return to main menu: ";
 				std::cin >> year;
 				if (year == -1)
 					break;
@@ -238,7 +238,7 @@ int main() {
 						type = "Heavy Rain";
 						break;
 					case 14:
-						type = "Tsunami";
+						type = "Tsunami/Wave";
 						break;
 					case 15:
 						type = "High Wind";

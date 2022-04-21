@@ -1,33 +1,35 @@
 #include "graph.h"
 
+//default constructor
 graph::graph() {
 
 }
 
-void graph::insert(std::string inCountry, std::string outCountry) {
-    for (int i = 0; i < inCountry.length(); i++)
-        inCountry[i] = std::tolower(inCountry[i]);
-    for (int i = 0; i < outCountry.length(); i++)
-        outCountry[i] = std::tolower(outCountry[i]);
-    if (countries.find(outCountry) != countries.end()) {
-        adjList[inCountry].push_back(countries[outCountry]);
+//insert method for states with edges
+void graph::insert(std::string instate, std::string outstate) {
+    for (int i = 0; i < instate.length(); i++)
+        instate[i] = std::tolower(instate[i]);
+    for (int i = 0; i < outstate.length(); i++)
+        outstate[i] = std::tolower(outstate[i]);
+    if (countries.find(outstate) != countries.end()) {
+        adjList[instate].push_back(countries[outstate]);
     } else {
-        countries[outCountry] = country(outCountry);
-        adjList[inCountry].push_back(countries[outCountry]);
+        countries[outstate] = state(outstate);
+        adjList[instate].push_back(countries[outstate]);
     }
 }
 
-
-void graph::insert(std::string inCountry) {
-    for (int i = 0; i < inCountry.length(); i++)
-        inCountry[i] = std::tolower(inCountry[i]);
-    if (countries.find(inCountry) == countries.end()) {
-        countries[inCountry] = country(inCountry);
+//insert method for states with no edges ie alaska, hawaii
+void graph::insert(std::string instate) {
+    for (int i = 0; i < instate.length(); i++)
+        instate[i] = std::tolower(instate[i]);
+    if (countries.find(instate) == countries.end()) {
+        countries[instate] = state(instate);
     }
-    adjList[inCountry];
+    adjList[instate];
 }
 
-
+//breadth first search starting at src state
 void graph::breadthFirstCountries(std::string src) {
 
     for (int i = 0; i < src.length(); i++)
@@ -53,7 +55,7 @@ void graph::breadthFirstCountries(std::string src) {
     }
 }
 
-
+//depth first search starting at src state
 void graph::depthFirstCountries(std::string src) {
 
     std::map<std::string, bool> hasVisit;
@@ -74,66 +76,23 @@ void graph::depthFirstCountries(std::string src) {
     }
 }
 
-
-void graph::breadthFirstDisasters(std::string src) {
-
-    for (int i = 0; i < src.length(); i++)
-        src[i] = std::tolower(src[i]);
-
-    if (adjList.count(src) == 0)
-        return;
-
-    std::map<std::string, bool> hasVisit;
-    std::queue<std::string> q;
-    hasVisit[src] = true;
-    q.push(src);
-    while (!q.empty()) {
-        src = q.front();
-        countries[src].displayStats();
-        q.pop();
-        for (int i = 0; i < adjList[src].size(); i++) {
-            if (hasVisit.find(adjList[src][i].name) == hasVisit.end()) {
-                hasVisit[adjList[src][i].name] = true;
-                q.push(adjList[src][i].name);
-            }
-        }
-    }
-}
-
-
-void graph::depthFirstDisasters(std::string src) {
-
-    std::map<std::string, bool> hasVisit;
-
-    std::stack<std::string> s;
-    hasVisit[src] = true;
-    s.push(src);
-    while (!s.empty()) {
-        src = s.top();
-        countries[src].displayStats();
-        s.pop();
-        for (int i = 0; i < adjList[src].size(); i++) {
-            if (hasVisit.find(adjList[src][i].name) == hasVisit.end()) {
-                hasVisit[adjList[src][i].name] = true;
-                s.push(adjList[src][i].name);
-            }
-        }
-    }
-}
-
-
+//display X amount highest damage disasters
 void graph::displayXhighest(const int amount) {
     
     std::vector<disaster*> Xtypes(amount, new disaster());
 
-    std::map<std::string, country>::iterator it;
+    //iterate through all disasters
+    std::map<std::string, state>::iterator it;
     for (it = countries.begin(); it != countries.end(); it++) {
         for (int i = 0; i < it->second.disasters.size(); i++) {
             for (int j = 0; j < amount; j++) {
+                //find correct spot
                 if (it->second.disasters[i]->damage > Xtypes[j]->damage) {
+                    //move current values down 1
                     for (int z = amount - 2; z >= j; z--) {
                         Xtypes[z + 1] = Xtypes[z];
                     }
+                    //insert disaster in correct spot
                     Xtypes[j] = it->second.disasters[i];
                     break;
                 }
@@ -141,6 +100,7 @@ void graph::displayXhighest(const int amount) {
         }
     }
 
+    //display disasters
     for (int i = 0; i < Xtypes.size(); i++) {
         std::cout << "--------------------" << std::endl;
         std::cout << "State: " << Xtypes[i]->state << std::endl;
@@ -150,16 +110,24 @@ void graph::displayXhighest(const int amount) {
     }
 }
 
-
+//display X amount highest damage disasters of specified type
 void graph::displayXtypes(const int amount, std::string type) {
 
+    if (type == "") {
+        displayXhighest(amount);
+        return;
+    }
+
+    //store disasters
     std::vector<disaster*> Xtypes(amount, new disaster());
 
-    std::map<std::string, country>::iterator it;
+    std::map<std::string, state>::iterator it;
+    //iterate through all disasters
     for (it = countries.begin(); it != countries.end(); it++) {
         for (int i = 0; i < it->second.disasters.size(); i++) {
             for (int j = 0; j < amount; j++) {
                 if (it->second.disasters[i]->type == type && it->second.disasters[i]->damage > Xtypes[j]->damage) {
+                    //insert new disaster in correct spot
                     for (int z = amount - 2; z >= j; z--) {
                         Xtypes[z + 1] = Xtypes[z];
                     }
@@ -170,6 +138,7 @@ void graph::displayXtypes(const int amount, std::string type) {
         }
     }
 
+    //display all disasters
     for (int i = 0; i < Xtypes.size(); i++) {
         std::cout << "--------------------" << std::endl;
         std::cout << "State: " << Xtypes[i]->state << std::endl;
@@ -179,41 +148,42 @@ void graph::displayXtypes(const int amount, std::string type) {
     }
 }
 
-void graph::displayLocation(int year, std::string type, std::string state) {
+//filter function
+void graph::displayLocation(int year, std::string type, std::string State) {
 
     std::vector<disaster*> Xtypes;
 
-    if (state != "") {
+    if (State != "") {
         if (type != "" && year != 0) {
-            for (int i = 0; i < countries[state].disasters.size(); i++) {
-                if (countries[state].disasters[i]->type == type && countries[state].disasters[i]->year == year) {
-                    Xtypes.push_back(countries[state].disasters[i]);
+            for (int i = 0; i < countries[State].disasters.size(); i++) {
+                if (countries[State].disasters[i]->type == type && countries[State].disasters[i]->year == year) {
+                    Xtypes.push_back(countries[State].disasters[i]);
                 }
             }
         }
         else if (type != "") {
-            for (int i = 0; i < countries[state].disasters.size(); i++) {
-                if (countries[state].disasters[i]->type == type) {
-                    Xtypes.push_back(countries[state].disasters[i]);
+            for (int i = 0; i < countries[State].disasters.size(); i++) {
+                if (countries[State].disasters[i]->type == type) {
+                    Xtypes.push_back(countries[State].disasters[i]);
                 }
             }
         }
         else if (year != 0) {
-            for (int i = 0; i < countries[state].disasters.size(); i++) {
-                if (countries[state].disasters[i]->year == year) {
-                    Xtypes.push_back(countries[state].disasters[i]);
+            for (int i = 0; i < countries[State].disasters.size(); i++) {
+                if (countries[State].disasters[i]->year == year) {
+                    Xtypes.push_back(countries[State].disasters[i]);
                 }
             }
         }
         else {
-            for (int i = 0; i < countries[state].disasters.size(); i++) {
-                Xtypes.push_back(countries[state].disasters[i]);
+            for (int i = 0; i < countries[State].disasters.size(); i++) {
+                Xtypes.push_back(countries[State].disasters[i]);
             }
         }
     }
     else if (type != "") {
         if (year != 0) {
-            std::map<std::string, country>::iterator it;
+            std::map<std::string, state>::iterator it;
             for (it = countries.begin(); it != countries.end(); it++) {
                 for (int i = 0; i < it->second.disasters.size(); i++) {
                     if (it->second.disasters[i]->type == type && it->second.disasters[i]->year == year) {
@@ -223,7 +193,7 @@ void graph::displayLocation(int year, std::string type, std::string state) {
             }
         }
         else {
-            std::map<std::string, country>::iterator it;
+            std::map<std::string, state>::iterator it;
             for (it = countries.begin(); it != countries.end(); it++) {
                 for (int i = 0; i < it->second.disasters.size(); i++) {
                     if (it->second.disasters[i]->type == type) {
@@ -234,7 +204,7 @@ void graph::displayLocation(int year, std::string type, std::string state) {
         }
     }
     else if (year != 0) {
-        std::map<std::string, country>::iterator it;
+        std::map<std::string, state>::iterator it;
         for (it = countries.begin(); it != countries.end(); it++) {
             for (int i = 0; i < it->second.disasters.size(); i++) {
                 if (it->second.disasters[i]->year == year) {
@@ -244,7 +214,7 @@ void graph::displayLocation(int year, std::string type, std::string state) {
         }
     }
     else {
-        std::map<std::string, country>::iterator it;
+        std::map<std::string, state>::iterator it;
         for (it = countries.begin(); it != countries.end(); it++) {
             for (int i = 0; i < it->second.disasters.size(); i++) {
                 Xtypes.push_back(it->second.disasters[i]);
@@ -261,8 +231,7 @@ void graph::displayLocation(int year, std::string type, std::string state) {
     }
 }
 
-
-
+//display a single state's disasters
 void graph::display(std::string state) {
     countries[state].displayStats();
 }

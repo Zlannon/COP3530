@@ -6,14 +6,14 @@
 #include "disaster.h"
 
 
-struct country {
+struct state {
 
 	disaster runner;
 
 	std::vector<disaster*> disasters;
 	std::string name;
 
-	country();
-	country(std::string name);
+	state();
+	state(std::string name);
 	void displayStats();
 };

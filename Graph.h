@@ -10,20 +10,20 @@
 #include <cmath>
 #include <algorithm>
 
-#include "Country.h"
+#include "State.h"
 #include "disaster.h"
 
 // class declaration 
 class graph {
 	int numVertices;
-	country runner;
-	std::map<std::string, std::vector<country>> adjList;
-	std::map<std::string, country> countries;
+	state runner;
+	std::map<std::string, std::vector<state>> adjList;
+	std::map<std::string, state> countries;
 public:
 
 	graph();
-	void insert(std::string inCountry, std::string outCountry);
-	void insert(std::string inCountry);
+	void insert(std::string instate, std::string outstate);
+	void insert(std::string instate);
 	void breadthFirstCountries(std::string src);
 	void depthFirstCountries(std::string src);
 	void breadthFirstDisasters(std::string src);

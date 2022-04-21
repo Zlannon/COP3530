@@ -98,13 +98,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Country.cpp" />
+    <ClCompile Include="State.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="disaster.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Country.h" />
+    <ClInclude Include="State.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="disaster.h" />
   </ItemGroup>
@@ -114,7 +114,7 @@
   <ItemGroup>
     <None Include="App.css" />
     <None Include="App.js" />
-    <None Include="data1.0.csv" />
+    <None Include="Data2.0.csv" />
     <None Include="Switch.css" />
     <None Include="Switch.js" />
   </ItemGroup>

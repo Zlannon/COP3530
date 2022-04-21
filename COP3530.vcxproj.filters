@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Country.cpp">
+    <ClCompile Include="State.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Graph.cpp">
@@ -29,7 +29,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Country.h">
+    <ClInclude Include="State.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Graph.h">
@@ -51,13 +51,13 @@
     <None Include="Switch.js">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="data1.0.csv">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="App.js">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="App.css">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Data2.0.csv">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

@@ -1,17 +1,17 @@
-#include "Country.h"
+#include "state.h"
 
-country::country() {
+state::state() {
 
 }
 
-country::country(std::string n) {
+state::state(std::string n) {
 	for (int i = 0; i < n.length(); i++)
 		n[i] = std::tolower(n[i]);
 	name = n;
-	runner.Load(disasters, "data1.0.csv", n);
+	runner.Load(disasters, "Data2.0.csv", n);
 }
 
-void country::displayStats() {
+void state::displayStats() {
 	for (int i = 0; i < disasters.size(); i++) {
 		std::cout << "--------------------" << std::endl;
 		std::cout << "State: " << disasters[i]->state << std::endl;
